@@ -1,0 +1,53 @@
+<?php
+
+echo "Wellcome to php website<br>";
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+$databse = "trial_insert";
+
+
+
+
+//Creating connection ...
+$conn = mysqli_connect($servername,$username,$password,$databse);
+
+if (!$conn){
+    die("Sorry.... connection error..".mysqli_connection_error());
+}
+
+else {
+    echo "Connection successfull....";
+}
+
+
+
+//Creating database ...
+$sql = "CREATE DATABASE trial_insert ";
+$result = mysqli_query($conn,$sql);
+
+if($result){
+    echo "The db is created successfully...";
+}
+
+else {
+    echo "The db was not created successfully ...error ... ".mysqli_connection_error($conn);
+}
+
+
+//Creating table ...
+$sql = "CREATE TABLE `user` (`sl.no` INT(6) NOT NULL AUTO_INCREMENT , `first_name` VARCHAR(12) NOT NULL  , `last_name` VARCHAR(12) NOT NULL , PRIMARY KEY (`sl.no`)) ENGINE = InnoDB;";
+$result = mysqli_query($conn,$sql);
+
+if ($result){
+    echo "The table was created successfully<br>";
+
+}
+else{
+    echo "The table was not created ...error ..".mysqli_error($conn);
+}
+
+
+
+?>
